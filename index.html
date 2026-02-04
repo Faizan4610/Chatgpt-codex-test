@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supabase RealtimeTube</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <h1>RealtimeTube</h1>
+        <p class="subtitle">A realtime YouTube clone powered by Supabase</p>
+      </div>
+      <div class="connection-status" id="connectionStatus">Connecting...</div>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <h2>Add a video</h2>
+        <form id="videoForm" class="stack">
+          <label>
+            Title
+            <input type="text" id="videoTitle" placeholder="Live coding session" required />
+          </label>
+          <label>
+            YouTube URL
+            <input type="url" id="videoUrl" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" required />
+          </label>
+          <label>
+            Description
+            <textarea id="videoDescription" placeholder="Tell viewers what this video is about"></textarea>
+          </label>
+          <button type="submit">Publish video</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Trending now</h2>
+        <div id="videoList" class="video-list">Loading videos...</div>
+      </section>
+
+      <section class="panel player-panel">
+        <div class="player-header">
+          <h2 id="selectedTitle">Select a video</h2>
+          <button id="likeButton" class="secondary" disabled>
+            👍 Like <span id="likeCount">0</span>
+          </button>
+        </div>
+        <div class="player" id="player">
+          <div class="player-placeholder">Choose a video to start watching in realtime.</div>
+        </div>
+        <p class="description" id="selectedDescription"></p>
+        <div class="meta">
+          <span>Views: <strong id="viewCount">0</strong></span>
+          <span>Published: <strong id="publishedAt">--</strong></span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Live chat</h2>
+        <div id="commentList" class="comment-list">Pick a video to see comments.</div>
+        <form id="commentForm" class="stack">
+          <label>
+            Name
+            <input type="text" id="commentAuthor" placeholder="Streamer" required />
+          </label>
+          <label>
+            Comment
+            <textarea id="commentBody" placeholder="Say something nice" required></textarea>
+          </label>
+          <button type="submit" id="commentSubmit" disabled>Send comment</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>
+        Tip: open this page in two browser tabs to see Supabase realtime updates for videos, likes, and comments.
+      </p>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
