@@ -4,10 +4,10 @@ A lightweight, realtime YouTube-style experience built with Supabase and vanilla
 
 ## Features
 - Publish videos with title, description, and YouTube URL.
-- Create channels with avatars and realtime subscriber counts.
 - Watch videos in an embedded player.
 - Realtime counts for views and likes.
 - Realtime comments (live chat).
+- Create channels with avatars and realtime subscriber counts.
 - Search, filter by category, and sort trending videos.
 
 ## Setup
