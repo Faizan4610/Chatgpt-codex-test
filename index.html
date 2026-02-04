@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supabase RealtimeTube</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">▶</span>
+        <div>
+          <h1>RealtimeTube</h1>
+          <p class="subtitle">Your personal realtime YouTube-style hub</p>
+        </div>
+      </div>
+      <form class="search" id="searchForm" aria-label="Search videos">
+        <input type="search" id="searchInput" placeholder="Search videos" />
+        <button type="submit">Search</button>
+      </form>
+      <div class="connection-status" id="connectionStatus">Connecting...</div>
+    </header>
+
+    <div class="app-shell">
+      <aside class="sidebar">
+        <nav>
+          <a class="active" href="#">Home</a>
+          <a href="#">Subscriptions</a>
+          <a href="#">Library</a>
+          <a href="#">History</a>
+          <a href="#">Playlists</a>
+          <a href="#">Watch Later</a>
+        </nav>
+      </aside>
+
+      <main class="layout">
+        <section class="panel">
+          <h2>Upload to your channel</h2>
+          <form id="videoForm" class="stack">
+            <label>
+              Video title
+              <input type="text" id="videoTitle" placeholder="Live coding session" required />
+            </label>
+            <label>
+              YouTube URL
+              <input type="url" id="videoUrl" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" required />
+            </label>
+            <label>
+              Thumbnail URL (optional)
+              <input type="url" id="videoThumbnail" placeholder="https://images.example.com/thumbnail.jpg" />
+            </label>
+            <label>
+              Channel name
+              <input type="text" id="channelName" placeholder="Realtime Creator" required />
+            </label>
+            <label>
+              Channel avatar (optional)
+              <input type="url" id="channelAvatar" placeholder="https://images.example.com/avatar.png" />
+            </label>
+            <label>
+              Category
+              <select id="videoCategory">
+                <option value="Tech">Tech</option>
+                <option value="Gaming">Gaming</option>
+                <option value="Music">Music</option>
+                <option value="Education">Education</option>
+                <option value="Lifestyle">Lifestyle</option>
+              </select>
+            </label>
+            <label>
+              Description
+              <textarea id="videoDescription" placeholder="Tell viewers what this video is about"></textarea>
+            </label>
+            <button type="submit">Publish video</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Trending now</h2>
+            <div class="controls">
+              <select id="categoryFilter">
+                <option value="all">All categories</option>
+              </select>
+              <select id="sortSelect">
+                <option value="newest">Newest</option>
+                <option value="views">Most viewed</option>
+                <option value="likes">Most liked</option>
+              </select>
+            </div>
+          </div>
+          <div id="videoList" class="video-grid">Loading videos...</div>
+        </section>
+
+        <section class="panel player-panel">
+          <div class="player-header">
+            <div>
+              <h2 id="selectedTitle">Select a video</h2>
+              <p class="channel-line">
+                <img id="channelAvatarPreview" alt="" />
+                <span id="channelLabel">Pick a video to see the channel</span>
+              </p>
+            </div>
+            <div class="player-actions">
+              <button id="subscribeButton" class="secondary" disabled>
+                Subscribe · <span id="subscriberCount">0</span>
+              </button>
+              <button id="likeButton" class="secondary" disabled>
+                👍 Like <span id="likeCount">0</span>
+              </button>
+            </div>
+          </div>
+          <div class="player" id="player">
+            <div class="player-placeholder">Choose a video to start watching in realtime.</div>
+          </div>
+          <p class="description" id="selectedDescription"></p>
+          <div class="meta">
+            <span>Views: <strong id="viewCount">0</strong></span>
+            <span>Published: <strong id="publishedAt">--</strong></span>
+            <span>Category: <strong id="selectedCategory">--</strong></span>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Live chat</h2>
+          <div id="commentList" class="comment-list">Pick a video to see comments.</div>
+          <form id="commentForm" class="stack">
+            <label>
+              Name
+              <input type="text" id="commentAuthor" placeholder="Streamer" required />
+            </label>
+            <label>
+              Comment
+              <textarea id="commentBody" placeholder="Say something nice" required></textarea>
+            </label>
+            <button type="submit" id="commentSubmit" disabled>Send comment</button>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <footer class="app-footer">
+      <p>
+        Tip: open this page in two browser tabs to see Supabase realtime updates for videos, likes, comments, and
+        subscribers.
+      </p>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
